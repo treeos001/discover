@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>直播发现 | 看见更大的世界</title>
+<meta name="description" content="人工精选的海外直播发现：游戏、料理、手作、现场音乐、开发与技术，来自 YouTube、Twitch、Kick、CHZZK 的真人直播，逐条人工核查，点击前往原平台观看。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='#f06b94'/%3E%3Crect x='18' y='18' width='64' height='50' rx='13' fill='#fff'/%3E%3Crect x='28' y='30' width='44' height='12' rx='6' fill='#e0487a'/%3E%3Crect x='28' y='47' width='27' height='12' rx='6' fill='#f9c6d7'/%3E%3Ccircle cx='80' cy='80' r='12' fill='#fff'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="直播发现">
+<meta property="og:title" content="直播发现 | 看见更大的世界">
+<meta property="og:description" content="游戏、料理、手作、现场音乐、开发与技术——来自 YouTube、Twitch、Kick、CHZZK 的真人直播，逐条人工核查，不内嵌播放。">
+<meta property="og:url" content="https://immersivetranslate.com/web-live-captions/discover/">
+<style>
+:root{
+  --pink:#f06b94;--pink-deep:#e0487a;--pink-ink:#b83a5e;
+  --pink-line:#f2cfdd;--pink-wash:#fff2f6;--pink-veil:#f9edf2;
+  --ink:#1d211f;--ink-btn:#202a26;
+  --paper:#f8f8f6;--line:#ececea;--line-soft:#e7e9e6;
+  --t1:#20211f;--t2:#676f69;--t3:#8b908c;--t4:#9aa09a;
+  --green:#3fae54;--green-wash:#eff7ef;--green-line:#d8ecd8;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--t1);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft Yahei",sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+a{text-decoration:none;color:inherit}
+::selection{background:var(--pink-wash);color:var(--pink-ink)}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:8px}
+
+header{height:76px;background:#fff;border-bottom:1px solid #ededeb;display:flex;align-items:center;justify-content:space-between;padding:0 6%;position:sticky;top:0;z-index:2;transition:background 350ms var(--ease),box-shadow 350ms var(--ease),border-color 350ms var(--ease)}
+header.up{background:rgba(255,255,255,.82);-webkit-backdrop-filter:saturate(1.7) blur(14px);backdrop-filter:saturate(1.7) blur(14px);border-bottom-color:transparent;box-shadow:0 1px 0 rgba(32,33,31,.05),0 8px 24px -18px rgba(32,33,31,.35)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.5px}
+.mark{position:relative;width:34px;height:34px;background:var(--pink);border-radius:10px;display:grid;place-items:center;box-shadow:0 5px 14px -6px rgba(240,107,148,.55)}
+.mark svg{display:block}
+.live-dot{position:absolute;right:-2px;bottom:-2px;width:9px;height:9px;border-radius:50%;background:#fff;border:2px solid var(--pink-deep)}
+.live-dot::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:1.5px solid var(--pink);opacity:0;animation:ring 2.2s var(--ease) infinite}
+.right{font-size:13px;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color 150ms ease}
+.right:hover{color:var(--pink-ink)}
+main{max-width:1400px;margin:auto;padding:0 5% 80px}
+
+.hero{padding:64px 0 38px;display:flex;align-items:end;justify-content:space-between;gap:20px}
+.eyebrow{font-size:12px;letter-spacing:2px;font-weight:800;color:var(--pink-ink)}
+.hero h1{font-size:42px;font-weight:800;letter-spacing:-2px;margin:12px 0;color:var(--ink);text-wrap:balance}
+.hero p{font-size:15px;color:#777e78;margin:0;line-height:1.7;max-width:44ch}
+
+.verified{display:flex;align-items:center;gap:9px;margin:14px 0 0;font-size:13px;color:#5c7a5e;background:var(--green-wash);border:1px solid var(--green-line);border-radius:10px;padding:11px 15px}
+.verified strong{font-variant-numeric:tabular-nums}
+.pulse{position:relative;flex:none}
+.verified .pulse{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.verified .pulse::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid var(--green);animation:ring 2.4s var(--ease) infinite}
+@keyframes ring{0%{transform:scale(.5);opacity:.7}70%{opacity:0}100%{transform:scale(2.2);opacity:0}}
+
+.filters{padding:30px 0 25px;border-bottom:1px solid var(--line-soft)}
+.filter-row{display:flex;align-items:flex-start;gap:22px;margin:0 0 17px}
+.filter-row:last-child{margin:0}
+.label{width:55px;flex:none;font-size:13px;font-weight:700;color:#919892;line-height:36px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid transparent;background:transparent;color:var(--t2);border-radius:8px;padding:9px 14px;font-size:13px;transition:background 150ms ease,color 150ms ease,border-color 150ms ease}
+.chip:hover{background:#efefed}
+.chip.active{background:var(--ink-btn);color:white}
+.platforms .chip{border-color:#e9ebe8;background:white}
+.platforms .chip:hover{border-color:var(--pink-line);color:var(--pink-ink)}
+.platforms .chip.active{border-color:var(--pink);background:var(--pink-wash);color:var(--pink-ink)}
+.chip.soon{border-color:#e9ebe8;background:#f4f4f2;color:#b3b8b3;cursor:not-allowed}
+.chip.soon:hover{background:#f4f4f2;color:#b3b8b3;border-color:#e9ebe8}
+
+.section{display:flex;align-items:end;justify-content:space-between;margin:34px 0 20px}
+.section h2{font-size:21px;margin:0 0 7px}
+.section p{margin:0;font-size:13px;color:var(--t3)}
+.section .aside{font-size:13px;color:var(--t3)}
+#count{font-variant-numeric:tabular-nums}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:22px}
+.card{display:flex;flex-direction:column;background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;opacity:0;transform:translateY(14px);transition:opacity 480ms var(--ease),transform 550ms var(--ease),box-shadow 350ms var(--ease)}
+.card.in{opacity:1;transform:none}
+.card.ready{transition:opacity 200ms ease,transform 350ms var(--ease),box-shadow 350ms var(--ease)}
+.card.instant{transition:none!important}
+.card.in:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(32,33,31,.04),0 18px 34px -14px rgba(32,33,31,.16)}
+.card:focus-visible{outline-offset:4px;border-radius:18px}
+.cover{position:relative;aspect-ratio:16/9;background:#efefed;overflow:hidden}
+.cover img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity 420ms ease,transform 700ms var(--ease)}
+.cover img.ld{opacity:1}
+.card:hover .cover img,.card:focus-visible .cover img{transform:scale(1.035)}
+.badge{position:absolute;left:10px;top:10px;display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.94);color:var(--pink-ink);border-radius:7px;padding:4px 9px;font-size:12px;font-weight:800;letter-spacing:.5px}
+.badge .pulse{width:7px;height:7px;border-radius:50%;background:var(--pink)}
+.badge .pulse::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1.5px solid var(--pink);animation:ring 2s var(--ease) infinite}
+.badge.stale{color:#7d837d}
+.badge.stale .pulse{background:#b3b8b3}
+.badge.stale .pulse::after{animation:none;opacity:0}
+.pill{position:absolute;right:10px;top:10px;background:rgba(24,26,25,.72);color:#fff;border-radius:7px;padding:4px 9px;font-size:12px;font-weight:600;backdrop-filter:blur(4px)}
+.play{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:var(--pink);color:#fff;display:grid;place-items:center;font-size:15px;opacity:0;transform:translateY(5px) scale(.9);transition:opacity 350ms var(--ease),transform 350ms var(--ease)}
+.card:hover .play,.card:focus-visible .play{opacity:1;transform:none}
+
+.info{display:flex;gap:12px;padding:15px 15px 17px;flex:1}
+.avatar{position:relative;flex:none;width:38px;height:38px;border-radius:50%;background:var(--pink-veil);color:var(--pink-ink);font-weight:800;display:grid;place-items:center;font-size:15px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(32,33,31,.06)}
+.avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.details{min-width:0;display:flex;flex-direction:column;gap:6px;flex:1}
+.details h3{margin:0;font-size:15px;line-height:1.45;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;transition:color 150ms ease}
+.card:hover .details h3{color:var(--pink-ink)}
+.orig{font-size:12px;color:var(--t4);line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+.meta{font-size:13px;color:#777e78;word-break:break-word}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;color:var(--t2);background:#f2f2f0;border-radius:6px;padding:3px 8px;font-variant-numeric:tabular-nums}
+.watch{margin-top:auto;align-self:flex-start;display:inline-block;background:var(--ink-btn);color:#fff;border-radius:9px;padding:9px 15px;font-size:13px;font-weight:700;transition:background 150ms ease,transform 350ms var(--ease)}
+.card:hover .watch{background:var(--pink-deep)}
+
+.empty{grid-column:1/-1;text-align:center;color:var(--t4);font-size:14px;background:#fff;border:1px dashed #e2e4e1;border-radius:14px;padding:60px 20px;opacity:1;transform:none}
+.more{display:flex;align-items:center;gap:9px;margin:40px auto 0;background:#fff;border:1px solid var(--line);border-radius:11px;padding:12px 22px;font-size:14px;color:#4d554e;font-variant-numeric:tabular-nums;transition:background 150ms ease,border-color 350ms var(--ease),transform 350ms var(--ease),box-shadow 350ms var(--ease)}
+.more:hover{background:#fff;border-color:var(--pink-line);transform:translateY(-2px);box-shadow:0 12px 26px -18px rgba(32,33,31,.4)}
+.more .mk{color:var(--pink);display:inline-block;transition:transform 550ms var(--ease)}
+.more:hover .mk{transform:rotate(90deg)}
+
+.stamp{text-align:center;margin:62px 0 -18px;font-size:52px;line-height:1;color:var(--pink);opacity:.13;user-select:none;pointer-events:none}
+.footer{display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center;margin-top:70px;padding-top:26px;border-top:1px solid var(--line-soft);color:var(--t4);font-size:12.5px;line-height:1.7}
+.footer span:first-child{color:var(--t3)}
+
+.dialog{border:none;border-radius:16px;padding:26px 28px;max-width:360px;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+.dialog h3{margin:0 0 10px;font-size:17px}
+.dialog p{margin:0 0 18px;font-size:13.5px;color:#666;line-height:1.7}
+.dialog button{background:var(--ink-btn);color:#fff;border:none;border-radius:9px;padding:9px 18px;font-size:13px}
+.dialog::backdrop{background:rgba(20,22,21,.35)}
+
+@media (max-width:640px){.hero h1{font-size:30px}.hero{flex-direction:column;align-items:flex-start;padding:40px 0 28px}.label{width:auto;line-height:2}.right{display:none}.section{flex-direction:column;align-items:flex-start;gap:4px}.verified{flex-wrap:wrap}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important}
+  .card{opacity:1!important;transform:none!important}
+  .cover img{opacity:1!important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><rect x="4.8" y="6.2" width="14.4" height="12" rx="3.2" fill="#fff"/><rect x="7.2" y="8.6" width="9.6" height="2.8" rx="1.4" fill="#e0487a"/><rect x="7.2" y="13.2" width="6.2" height="2.8" rx="1.4" fill="#f8bcd0"/></svg><span class="live-dot"></span></span> 直播发现</div>
+  <a class="right" href="https://immersivetranslate.com/web-live-captions/" target="_blank" rel="noopener" title="了解沉浸式翻译网页直播字幕">沉浸式翻译 · 网页直播字幕 &nbsp;/&nbsp; 发现更多精彩</a>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">A WORLD OF LIVE</div>
+      <h1>世界正在直播。</h1>
+      <p>有人在开荒，有人在开火，有人在拆一台坏了四十年的表。跨越语言和平台，此刻值得一看的直播，已经替你选好。</p>
+    </div>
+  </section>
+
+  <div class="verified"><span class="pulse"></span><span>最后人工核查：<strong id="verifiedAt"></strong>（UTC+8）· 本次收录 <strong id="totalCount"></strong> 场 · 之后未再复核</span></div>
+
+  <section class="filters" aria-label="筛选直播">
+    <div class="filter-row"><div class="label">类型</div><div class="chips" id="categories"></div></div>
+    <div class="filter-row"><div class="label">平台</div><div class="chips platforms" id="platforms"></div></div>
+  </section>
+
+  <div class="section">
+    <div><h2>正在直播 <span style="color:#e36b93">✳</span></h2><p id="count"></p></div>
+    <span class="aside">六个类型 · 点击卡片前往原平台</span>
+  </div>
+
+  <div class="grid" id="grid" aria-live="polite"></div>
+  <button class="more" id="more" hidden>加载更多 <span class="mk" aria-hidden="true">✳</span></button>
+
+  <div class="stamp" aria-hidden="true">✳</div>
+
+  <footer class="footer">
+    <span>✳ &nbsp; 直播发现 · 发现更多，理解更多</span>
+    <span>人工精选 · 已排除成人与博彩内容 · 不内嵌播放 · 直播状态以原平台为准</span>
+    <span>中文标题为便于浏览的人工译名 · 直播随时可能结束或内容变化</span>
+  </footer>
+</main>
+
+<script>
+// 数据：2026-11-04 16:40（UTC+8）从各平台公开热门列表抓取，逐条人工核查内容与在播状态后筛选
+// 筛选规则：排除成人/成人标记频道、博彩、政治时事、循环挂机低质流；保留可公开观看的优质直播
+// 更新方式：重新抓取后人工复核，替换下方 items 并同步更新 VERIFIED 时间
+const items=[
+{"zh": "T1 vs KC 八强 BO5 · Caedrel 二路解说", "orig": "🔴WORLDS 2026 T1 VS KC QUARTERFINALS🔴", "ch": "Caedrel", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 342448, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_caedrel-640x360.jpg", "url": "https://www.twitch.tv/caedrel", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/483a37ac-58fd-4e2f-8dc3-2c68a0164112-profile_image-150x150.png"},
+{"zh": "WoW Forever · Asmongold 重返艾泽拉斯", "orig": "[DROPS ON] UNBANNED EXILECON POE2 NEWS->FOREVER WOW RELEASE BIG DAY HUGE DRAMA  NEW GAMES BIG NEWS  REACTS !restedXP | @asmongold247", "ch": "zackrawrr", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 45994, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_zackrawrr-640x360.jpg", "url": "https://www.twitch.tv/zackrawrr", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/a9ce83ba-c0bd-49cc-83bd-9d17647a211a-profile_image-150x150.png"},
+{"zh": "WoW Forever 线下 LAN 收官 · 现场抽奖", "orig": "LAST LAN DAY. 500k given away today | !merch !podcast !gamersupps !starforge !youtube", "ch": "sodapoppin", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 24181, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_sodapoppin-640x360.jpg", "url": "https://www.twitch.tv/sodapoppin", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/fc7b15b2-e400-4e74-8c8b-2ad3725e5770-profile_image-150x150.png"},
+{"zh": "WoW Forever · 全服首个 60 级竞速", "orig": "[DROPS] ♾️ 60 WORLD FIRST ATTEMPTING WF 60 IN FOREVER WOW ♾️ !Guide", "ch": "JokerdTV", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 30589, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_jokerdtv-640x360.jpg", "url": "https://www.twitch.tv/jokerdtv", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/02f9752b-833e-436d-b62b-34e7eb798261-profile_image-150x150.png"},
+{"zh": "无畏契约战队公开赛 Day2 · FNS 大师课", "orig": "FNS | Masterclass vs CSL acad | VCT Americas Kickoff - Day 2 OQ | shopfns.com | !bracket !inzone !masterclass", "ch": "GOFNS", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 14930, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_gofns-640x360.jpg", "url": "https://www.twitch.tv/gofns", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/69ba6f42-a9f2-44a6-a088-95faf9d0ddd3-profile_image-150x150.png"},
+{"zh": "堡垒之夜海盗代币悬赏 · 第 4 天", "orig": "🦜️CANT END UNTIL I GET FORTNITE PIRATE TOKEN 🦜️DAY 4 🦜️7000+ CHESTS 🦜️WATCHTIME & SUB BADGE 🦜️ [twitter/insta stableronaldo] !po !com", "ch": "stableronaldo", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 42481, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_stableronaldo-640x360.jpg", "url": "https://www.twitch.tv/stableronaldo", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/020d2ed3-c2f2-4d33-805f-92cf966a9c43-profile_image-150x150.png"},
+{"zh": "堡垒之夜宝箱大搜刮 · 与 Ron、Clix 联动", "orig": "[667/730] 📦 FORTNITE TOKEN HUNT W/ RON, CLIX & LAIYS 📦", "ch": "Jynxzi", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 24176, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_jynxzi-640x360.jpg", "url": "https://www.twitch.tv/jynxzi", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/645d98a0-a2eb-48a3-b687-cfbc55243e4a-profile_image-150x150.png"},
+{"zh": "FITNACRAFT 慈善马拉松 · 德国 MC 社区盛会", "orig": "🚨 FITNACRAFT 🚨 TIMGIOH BODYGUARD 🚨 2 MONATE 24/7 LIVE 🚨 TAG 27 🚨 NOTY GmbH WG mit @DIMEAX & @NORMAN 🚨 !pmm | Werbung", "ch": "nooreax", "plat": "Twitch", "cat": "游戏", "lang": "德语", "v": 11032, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_nooreax-640x360.jpg", "url": "https://www.twitch.tv/nooreax", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/cf4d614e-35d9-43ec-8dc4-63de61989132-profile_image-150x150.png"},
+{"zh": "Apex 新赛季直播 · 前冠军指挥视角", "orig": "Loser plays new Season and gives you 15th place opinion", "ch": "ImperialHal__", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 4478, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_imperialhal__-640x360.jpg", "url": "https://www.twitch.tv/imperialhal__", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/6d306649-dd15-4db8-82d8-655694ba692f-profile_image-150x150.png"},
+{"zh": "CS2 周五之夜 · 冲击 16K 段位", "orig": "MY TURN TO HIT 16K!!! FRIDAY NIGHT GOOD VIBES CS ALL NIGHT LET'S FREAKIN GO", "ch": "fuslie", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 2834, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_fuslie-640x360.jpg", "url": "https://www.twitch.tv/fuslie", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/01446d6a-1841-465f-9664-d92b8704b870-profile_image-150x150.png"},
+{"zh": "逃离塔科夫 · 成就狩猎专场", "orig": "[ FREE DROPS ] ACHIEVEMENT HUNTING TIME | !STARFORGE", "ch": "SheefGG", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 2646, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_sheefgg-640x360.jpg", "url": "https://www.twitch.tv/sheefgg", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/2aead78a-797a-47a3-8cf2-2a86dc00ab19-profile_image-150x150.png"},
+{"zh": "NoPixel V 警匪 RP · Paleto 大结局", "orig": "🐤LIVE🐤FRIDAY IS HERE🐤DRAMA🐤NEWS🐤GTA V🐤NOPIXEL V🐤PALETO FINALE🐤BIG PUZZLE CRACKER🐤ON THE JOB🐤LOCK IT IN🐤", "ch": "xQc", "plat": "Twitch", "cat": "游戏", "lang": "英语", "v": 18141, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_xqc-640x360.jpg", "url": "https://www.twitch.tv/xqc", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/xqc-profile_image-9298dca608632101-150x150.jpeg"},
+{"zh": "时之笛重制版 · 速通技巧研究", "orig": "Ocarina of Time Remake speedrun strat research", "ch": "ZFG", "plat": "YouTube", "cat": "游戏", "lang": null, "v": "1,918 watching", "thumb": "https://i.ytimg.com/vi/SkJi94m8FyM/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=SkJi94m8FyM", "av": "https://yt3.googleusercontent.com/ytc/AIdro_mcRq3J_Aw_2Sker0K3WCCwCxayeBd24z-iP3cNj4O0AQ=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "WoW Forever · 首个 60 级世界竞速 Day2", "orig": "WoW Forever World FIRST 60 RACE - Day 2", "ch": "Ahmpy", "plat": "YouTube", "cat": "游戏", "lang": null, "v": "2,021 watching", "thumb": "https://i.ytimg.com/vi/6NG7bBzIEp8/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=6NG7bBzIEp8", "av": "https://yt3.googleusercontent.com/owyZFbEtkucsgMycqNzYWMPjVN9qbe4CjavR9s__M10sdY_IxUYBakyrbJbUpb9Qaqwy4VOk6Q=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "NoPixel V 角色扮演 · Lang Buddha 直播", "orig": "Lang Buddha | NoPixel V | Watch NOPIXEL NEWS EP 8 | https://youtu.be/zplgCjKohno", "ch": "buddha", "plat": "Kick", "cat": "游戏", "lang": "英语", "v": 16400, "thumb": "https://images.kick.com/video_thumbnails/BO2zfdDBEu6T/2sOsRPMMBpLt/720.webp?versionId=wOVqSEYOuR_6JuRxQDcdDIIjgzAksWmE", "url": "https://kick.com/buddha", "av": "https://files.kick.com/images/user/33057/profile_image/conversion/f9532639-c917-468d-899a-da08c31a1d77-fullsize.webp"},
+{"zh": "WoW Forever 上线首日 · 大事件边看边聊", "orig": "[DROPS ON] BIG DAY HUGE DRAMA NEWS+MAYBE GAMES MULTISTREAMING BIG NEWS+GAMES+REACTS #Ad | Follow @asmongold247", "ch": "asmongold", "plat": "Kick", "cat": "游戏", "lang": "英语", "v": 5563, "thumb": "https://images.kick.com/video_thumbnails/gF7htJHIPzP0/rM4lvt8VodLh/720.webp?versionId=RMtRGfCTBlq8FbftyrImJJFPBPR1r3n8", "url": "https://kick.com/asmongold", "av": "https://files.kick.com/images/user/13928/profile_image/conversion/0115ff28-1ec9-4e1f-a007-1108fc839bde-fullsize.webp"},
+{"zh": "WoW Forever 新服探索 · 韩服主播体验另类世界观", "orig": "울챔스 / T1 vs KC | 녹아웃 스테이지 8강 Day4 #WORLDS2026", "ch": "울프", "plat": "CHZZK", "cat": "游戏", "lang": "韩语", "v": 80044, "thumb": "https://livecloud-thumb.akamaized.net/chzzk/livecloud/KR/stream/26465562/live/22072330/publish/68580726/thumbnail/image_480.jpg", "url": "https://chzzk.naver.com/live/0b33823ac81de48d5b78a38cdbc0ab94", "av": "https://nng-phinf.pstatic.net/MjAyMzEyMjBfNDkg/MDAxNzAzMDU1NjA1MTY2.bCUbi8bRvnKsF6Gmw_EIPrll1fPYTkJzTDo243vchEEg.JIYN6Ve8RVWFNqjdiwrEImVAAK4s-bNrJRRGA0ikM8sg.JPEG/%EA%B7%B8%EC%9C%BD.jpg"},
+{"zh": "2026 全球总决赛八强 · T1 vs KC Day4 官方直播", "orig": "T1 vs KC | WORLDS 2026 | Quarters Day 4", "ch": "Riot Games", "plat": "Twitch", "cat": "资讯", "lang": "英语", "v": 84755, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_riotgames-640x360.jpg", "url": "https://www.twitch.tv/riotgames", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/35b02a12-d516-499e-90f8-7899f136fa18-profile_image-150x150.png"},
+{"zh": "英雄联盟 2026 全球总决赛 · T1 vs KC 八强", "orig": "T1 vs KC | WORLDS 2026 | Quarters Day 4", "ch": "LoL Esports", "plat": "YouTube", "cat": "资讯", "lang": null, "v": "206,122 watching", "thumb": "https://i.ytimg.com/vi/3bjMhxxyc-4/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=3bjMhxxyc-4", "av": "https://yt3.googleusercontent.com/_tN8W9XE1yCF5mKyUitB-zmpCds-bVldssf1Hs_i7QfXA3LDcZWE_wKB7p4278q0yuq_2o132w=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "2026 全球总决赛八强 · T1 vs KC LCK 官方转播", "orig": "T1 vs KC | 녹아웃 스테이지 8강 Day4 | 2026 월드 챔피언십", "ch": "LCK", "plat": "CHZZK", "cat": "资讯", "lang": "韩语", "v": 66633, "thumb": "https://livecloud-thumb.akamaized.net/chzzk/livecloud/KR/stream/26428721/live/22072243/publish/68580524/thumbnail/image_480.jpg", "url": "https://chzzk.naver.com/live/9381e7d6816e6d915a44a13c0195b202", "av": "https://nng-phinf.pstatic.net/MjAyNjEwMDlfMTM2/MDAxNzkxNTU3NDcyMzQy.ylebS_HuYWBSy--IgxlBvTLY9CLO6hoiDsaZpVYoaAsg.TFpCCoOoogivNukw6rwBNoiyvwptRWaKuaYBdlY2wKsg.PNG/image.png"},
+{"zh": "SpaceX 猎鹰 9 · 美国太空军机密任务发射", "orig": "SpaceX Falcon 9 rocket launches classified U.S. Space Force mission from California", "ch": "Spaceflight Now", "plat": "YouTube", "cat": "资讯", "lang": null, "v": "1,179 watching", "thumb": "https://i.ytimg.com/vi/5zPZKJicp0s/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=5zPZKJicp0s", "av": "https://yt3.googleusercontent.com/ytc/AIdro_m7OEVmxJpYrSxb0R9n8xEKGBI_qcnSc8s672Gn5qu2gw=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "主播团建度假 · Day 1", "orig": "🔴 STREAMER RETREAT🔴 DAY 1 🔴 GET IN HERE 🔴| !discord !prime !mod", "ch": "Suburbbaby", "plat": "Twitch", "cat": "生活", "lang": "英语", "v": 5174, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_suburbbaby-640x360.jpg", "url": "https://www.twitch.tv/suburbbaby", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/903394dc-3817-432d-b62c-df329d90d52f-profile_image-150x150.png"},
+{"zh": "德州公路旅行 · 休斯顿→圣安东尼奥 Day2", "orig": "HOUSTON -> SAN ANTONIO w/ @hitch 🇺🇸 TEXAS ROAD TRIP 🤠 DAY 2 | @StudyTme !new !ig", "ch": "StudyTme", "plat": "Twitch", "cat": "生活", "lang": "英语", "v": 1042, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_studytme-640x360.jpg", "url": "https://www.twitch.tv/studytme", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/c9d4b07d-3212-4d64-b2f1-0a140e78c908-profile_image-150x150.png"},
+{"zh": "颁奖礼礼服试装 · 强迫自己出门", "orig": "⭐️STREAMEDR AWARDS DRESS SHOPPING  ⭐️ FORCING MYSELF OUTSIDE ⭐️", "ch": "Cinna", "plat": "Twitch", "cat": "生活", "lang": "英语", "v": 5353, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_cinna-640x360.jpg", "url": "https://www.twitch.tv/cinna", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/f4e390c8-8f48-4081-b605-475b344fd3aa-profile_image-150x150.png"},
+{"zh": "黄金炸肉丸 · 三芝士酱现场下厨", "orig": "Crispy, golden croquetas. Three-cheese sauce, herb mayo, and more! | !menu !tip !donate", "ch": "DaramgarTV", "plat": "Twitch", "cat": "生活", "lang": "英语", "v": 63, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_daramgartv-640x360.jpg", "url": "https://www.twitch.tv/daramgartv", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/caf46245-bfbb-4d13-92bf-c121fe8cf445-profile_image-150x150.png"},
+{"zh": "街头热狗摊 · 边做边卖实录", "orig": "🔴 BEST STREET FOOD OFFICIAL LIVE 🌭 | Cooking & Selling Hot Dogs in Real Time!", "ch": "BestStreetFood", "plat": "Twitch", "cat": "生活", "lang": "葡萄牙语", "v": 62, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_beststreetfood-640x360.jpg", "url": "https://www.twitch.tv/beststreetfood", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/5435389f-2a04-4b81-8c0d-1427984f1d5d-profile_image-150x150.png"},
+{"zh": "越南法棍三明治 · 河内街头现做现卖", "orig": "LIVE 🔴 Ranked #1 Sandwich in the World | Vietnam’s Legendary Banh Mi 🥖🔥", "ch": "Street Food Everyday", "plat": "YouTube", "cat": "生活", "lang": null, "v": "7 watching", "thumb": "https://i.ytimg.com/vi/ENgGISokMS0/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=ENgGISokMS0", "av": "https://yt3.googleusercontent.com/7WQNTiJCBhkmYB-bvh4gyEmVypNXO2uVWiA2vIJhq7ddSiQA6wQ4hnw5qdX3rnzxKG4pV-BKgg=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "雪后路边摊 · 现烙肉夹馍", "orig": "【LIVE】Selling flatbread by the roadside after a snowfall.", "ch": "Chinese hamburger", "plat": "YouTube", "cat": "生活", "lang": null, "v": "31 watching", "thumb": "https://i.ytimg.com/vi/Ax3Ob90XRP8/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=Ax3Ob90XRP8", "av": "https://yt3.googleusercontent.com/7kPnqinRz5X4cwW6Tf21zumlCvOaEitz8upt67RVtrV0EDaTyYyN2xTYNnvmVvQ7kaUI9Bb3ZoI=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "东京酉市夜游 · 上野浅草秋日祭典", "orig": "Tokyo Live 💖🏮 Traditional Japanese Festival! Tori no Ichi, Autumn in Ueno, & Asakusa! 🍁", "ch": "Yoshimyan", "plat": "YouTube", "cat": "生活", "lang": null, "v": "379 watching", "thumb": "https://i.ytimg.com/vi/ihEhXPHpHhY/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=ihEhXPHpHhY", "av": "https://yt3.googleusercontent.com/SPR7XPFIVcq-pU_i1Znal2YeaeqoYLB2j3y2RaLHnki19OPReXeiu49sICSxZJfvYjur6Xn0Vw=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "周五闲聊 · 绿笛宝宝游戏抢人气", "orig": "EVERYONE IS ALREADY PLAYING STUPID GREEN BABY FLUTE GAME NO ONE WANTS TO WATCH MY ASS PLAY STUPID BABY FLUTE GREEN ELF GAME", "ch": "paymoneywubby", "plat": "Kick", "cat": "生活", "lang": "英语", "v": 8555, "thumb": "https://images.kick.com/video_thumbnails/fALaKf0VyAPn/dgQwjAeSw6om/720.webp?versionId=sqNb3XZok48TN5FWhzSTQKZMn2mAkxWt", "url": "https://kick.com/paymoneywubby", "av": "https://files.kick.com/images/user/57028734/profile_image/conversion/2b25b568-e13c-4c19-aa1b-cb547bd7b044-fullsize.webp"},
+{"zh": "韩国主播晨间闲聊 · 降温了", "orig": "춥다 추워🐶", "ch": "마뫄", "plat": "CHZZK", "cat": "生活", "lang": "韩语", "v": 659, "thumb": "https://livecloud-thumb.akamaized.net/chzzk/livecloud/KR/stream/26446321/live/22072238/publish/68580104/thumbnail/image_480.jpg", "url": "https://chzzk.naver.com/live/219d8e65810a77d6e42c7df018d9632b", "av": "https://nng-phinf.pstatic.net/MjAyMzEyMTlfNDAg/MDAxNzAyOTY0OTM5Nzgz.Rh9xnEtByJ7kkjJxkvbwq-PFpy5L6bOoQBmpKLmDKfIg.KvRYR2vMCaWOwG2Wp7sVHW62BipduF93Y_EvddmIa1Ig.JPEG/unnamed.jpg"},
+{"zh": "新表情包绘制 · 约稿接单中", "orig": "✧ new sui emotes?? and starting comms ✧ !comms !lore !sr !time !clip", "ch": "HisuiCai", "plat": "Twitch", "cat": "创作", "lang": "英语", "v": 165, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_hisuicai-640x360.jpg", "url": "https://www.twitch.tv/hisuicai", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/7d7b0ac3-7ab1-40e7-b299-b6836ff45c0e-profile_image-150x150.png"},
+{"zh": "周五绘画马拉松 · EN/JP 双语", "orig": "[EN/JP] 2026.11.6 Happy Friday! Lots of Drawing", "ch": "HoaiArtworks", "plat": "Twitch", "cat": "创作", "lang": "英语", "v": 130, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_hoaiartworks-640x360.jpg", "url": "https://www.twitch.tv/hoaiartworks", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/0a0f027a-8927-4b0b-afba-2699a53faad8-profile_image-150x150.png"},
+{"zh": "陶艺拉坯 · 手工制陶现场", "orig": "HR Sumra Pottery is live!", "ch": "HR Sumra Pottery", "plat": "YouTube", "cat": "创作", "lang": null, "v": "60 watching", "thumb": "https://i.ytimg.com/vi/iUtibURbgiQ/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=iUtibURbgiQ", "av": "https://yt3.googleusercontent.com/X9T1cEMs1xWufFaxh4dMa7xQdn9JH4Y1xldNKc5r8b4IlIxAAeSgIia2RHpWzwZB5hSn8xBSMz8=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "钩织圣诞熊挂饰 · 沉默跟织", "orig": "🔴 LIVE Crochet With Me 🎄 Christmas Bear Ornament | No Talking Crochet Along 🧸", "ch": "yarnsssssss", "plat": "YouTube", "cat": "创作", "lang": null, "v": "", "thumb": "https://i.ytimg.com/vi/BIz08m6S8DM/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=BIz08m6S8DM", "av": "https://yt3.googleusercontent.com/9us5cpDNRJwAEfR4ZDPOf63n5Z-zuaOXT0KuzjEVBk6veHIyA_REbjxpyeUfdmYhOrXangfO=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "神秘线团 · 钩织跟织活动", "orig": "Mystery Goomi Crochet Along!", "ch": "Club Crochet", "plat": "YouTube", "cat": "创作", "lang": null, "v": "2 watching", "thumb": "https://i.ytimg.com/vi/EoCJe67uFlM/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=EoCJe67uFlM", "av": "https://yt3.googleusercontent.com/Kzax8BWWHA2KAZicAlAxHMorS39KJ440RrTmOH7TQzXpYyu0nHwlMYnuGCy32UyOCHVaqXa6=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "乐高哈利波特 · 康沃尔小妖精拼搭直播", "orig": "🔴 LEGO Live Build Together Harry Potter Cornish Pixie #76461 + #30535", "ch": "Odelay Derado", "plat": "YouTube", "cat": "创作", "lang": null, "v": "10 watching", "thumb": "https://i.ytimg.com/vi/shvUGPfrh8Y/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=shvUGPfrh8Y", "av": "https://yt3.googleusercontent.com/JdwRNojoEjy20qCw8irVVgIbnhd2lbHemgBbM6joOspNUd0EUIyblPrGREh7sMQ4NDbOd9mjZw=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "周五金属之夜 · 吉他现场演奏", "orig": "Friday night METAL party 🤘", "ch": "66Samus", "plat": "Twitch", "cat": "音乐", "lang": "英语", "v": 256, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_66samus-640x360.jpg", "url": "https://www.twitch.tv/66samus", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/7f827cc1-c467-4af9-8561-794332d88a59-profile_image-150x150.png"},
+{"zh": "唱歌台 · 喉咙复健第 10 天", "orig": "【唱歌台】11/7唱完在睡覺喉嚨復健第10天~🎤~置頂萬聖節活動、🎤訂閱可看VOD ~ 🎤， ig追隨：ok19980321", "ch": "林涵", "plat": "Twitch", "cat": "音乐", "lang": "中文", "v": 159, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_ok19980321-640x360.jpg", "url": "https://www.twitch.tv/ok19980321", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/4df332c1-af2b-4601-b10d-ad3c64f99ff1-profile_image-150x150.png"},
+{"zh": "周五派对之夜 · DJ Québ 现场打碟", "orig": "FRIDAY PARTYY // ❗EXTRA ❗SUPPORT // ⚜️ DJ QUÉB ⚜️", "ch": "vlouue", "plat": "Twitch", "cat": "音乐", "lang": "法语", "v": 899, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_vlouue-640x360.jpg", "url": "https://www.twitch.tv/vlouue", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/9de3998d-7bc6-4598-8f28-b05086f42286-profile_image-150x150.png"},
+{"zh": "Techno 神殿 · 现场打碟", "orig": "THE TEMPLE OF TECHNO", "ch": "DJCristianaDeMatos", "plat": "Twitch", "cat": "音乐", "lang": "英语", "v": 485, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_djcristianadematos-640x360.jpg", "url": "https://www.twitch.tv/djcristianadematos", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/bacc23f8-0681-4e2b-a004-519061549541-profile_image-150x150.png"},
+{"zh": "金属吉他 · 现场演奏直播", "orig": "🎸LIVE GUITAR STREAM 🎸", "ch": "The Pete Metal Show", "plat": "YouTube", "cat": "音乐", "lang": null, "v": "26 watching", "thumb": "https://i.ytimg.com/vi/rpwvABnnrXI/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=rpwvABnnrXI", "av": "https://yt3.googleusercontent.com/YX4RSXmRLer3GFlUDx3BNDRsTwjWzBGztqhyVj4KAqVFRfEOh86R_pjt17cjSFheWr_Hh7m7aw=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "AMD 9850X3D + RX 9070 · 装机实录", "orig": "NEW TCOMAS 360 AIO! | AMD 9850X3D + RX 9070 PC Build!", "ch": "AMD", "plat": "Twitch", "cat": "科技", "lang": "英语", "v": 37, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_amd-640x360.jpg", "url": "https://www.twitch.tv/amd", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/amd-profile_image-f71e39968d261799-150x150.png"},
+{"zh": "Chamber TKL · 客制化键盘装机", "orig": "Chamber TKL BUILD STREAM | !build #sponsored", "ch": "alexotos", "plat": "Twitch", "cat": "科技", "lang": "英语", "v": 198, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_alexotos-640x360.jpg", "url": "https://www.twitch.tv/alexotos", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/15de1099-63f9-412c-8989-e1614ef61d75-profile_image-150x150.png"},
+{"zh": "深空摄影后期 · SIRIL 处理星云星系", "orig": "LIVE de Pré Processamento e Pós Processamento de ASTROFOTOGRAFIA no SIRIL - Nebulosas e Galáxias!!", "ch": "Lorak", "plat": "Twitch", "cat": "科技", "lang": "葡萄牙语", "v": 49, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_lorak-640x360.jpg", "url": "https://www.twitch.tv/lorak", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/fa2b91c0-3342-4cd7-a87f-d088b7e88531-profile_image-150x150.png"},
+{"zh": "前端开发直播 · Tab Antics 继续", "orig": "HAPPY FRIYAY!!! Continuing on Tab Antics so that chat can troll my browser tabs for channel points or bits", "ch": "cmgriffing", "plat": "Twitch", "cat": "科技", "lang": "英语", "v": 57, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_cmgriffing-640x360.jpg", "url": "https://www.twitch.tv/cmgriffing", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/922cf4da-03fb-431a-a804-6029457648f8-profile_image-150x150.png"},
+{"zh": "Rust UI + Llama.cpp · 本地模型与 RAG 实战", "orig": "Nvidia Baja | Datacenters | UI para Rust | Probamos Modelos en Llama.CPP | Vamos a construir un agente con RAG (Vuelve Boxy)", "ch": "TheAnibalOS", "plat": "Twitch", "cat": "科技", "lang": "英语", "v": 32, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_theanibalos-640x360.jpg", "url": "https://www.twitch.tv/theanibalos", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/b980f25f-946f-42e9-bd95-bb619f6a18d0-profile_image-150x150.png"},
+{"zh": "胸部训练直播课 · 跟练向", "orig": "WORKOUT STREAM: Chest", "ch": "yourfriendkevin_", "plat": "Twitch", "cat": "运动", "lang": "英语", "v": 72, "thumb": "https://static-cdn.jtvnw.net/previews-ttv/live_user_yourfriendkevin_-640x360.jpg", "url": "https://www.twitch.tv/yourfriendkevin_", "av": "https://static-cdn.jtvnw.net/jtv_user_pictures/134956d5-5495-4e1d-b510-07b0eb17ce85-profile_image-150x150.png"},
+{"zh": "街头健身 · 居家跟练课", "orig": "Calisthenics Live Home Workout", "ch": "Nates Calisthenics Fitness", "plat": "YouTube", "cat": "运动", "lang": null, "v": "28 watching", "thumb": "https://i.ytimg.com/vi/lv_7GgRdICs/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=lv_7GgRdICs", "av": "https://yt3.googleusercontent.com/AqOhW9-FNluoEEamTtzv2rdRDK1EuSBG68NAD7V7nCaXV8qbzJ_rcInW8GZcvEWJfWywgsnJ2Q=s88-c-k-c0x00ffffff-no-rj"},
+{"zh": "Pureplay 莱德杯 · 红队对蓝队", "orig": "🔴 LIVE: Pureplay Ryder Cup 2026 | TEAM RED vs TEAM BLUE! 🏆", "ch": "Hosel Rocket Golf", "plat": "YouTube", "cat": "运动", "lang": null, "v": "21 watching", "thumb": "https://i.ytimg.com/vi/J37-lYn0e9w/hqdefault.jpg", "url": "https://www.youtube.com/watch?v=J37-lYn0e9w", "av": "https://yt3.googleusercontent.com/nuVCcQLLU6yGqsZYVswRs712t4y11FyeCcSc9kcAfF7yTl_8Sh4M4mILmCKVQnjjA-8bp81WLg=s88-c-k-c0x00ffffff-no-rj"}
+];
+const VERIFIED='2026-11-07 08:40';
+const CAT_ORDER=['游戏','生活','创作','音乐','科技','运动','资讯'];
+const cats=['全部',...CAT_ORDER.filter(c=>items.some(x=>x.cat===c))];
+const PLAT_ORDER=['YouTube','Twitch','Kick','CHZZK'];
+const plats=['全部',...PLAT_ORDER.filter(p=>items.some(x=>x.plat===p))];
+const SOON=[{n:'TikTok',why:'TikTok 没有公开的在播列表接口，无法在不登录的前提下逐条核查真人直播'},
+            {n:'Facebook',why:'Facebook 直播需要登录才能浏览，没有公开的在播列表接口，因此无法接入'}];
+function svgFallback(label,bg){return "data:image/svg+xml;utf8,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='640' height='360'><rect width='640' height='360' fill='"+bg+"'/><text x='320' y='172' font-family='sans-serif' font-size='34' fill='rgba(255,255,255,.22)' text-anchor='middle'>\u2733</text><text x='320' y='208' font-family='sans-serif' font-size='14' letter-spacing='4' fill='rgba(255,255,255,.46)' text-anchor='middle'>"+String(label).toUpperCase()+"</text></svg>").replace(/'/g,'%27')}
+const FALLBACK={Twitch:svgFallback('Twitch','#1a1c1b'),YouTube:svgFallback('YouTube','#c33b62'),Kick:svgFallback('Kick','#0e2f23'),CHZZK:svgFallback('CHZZK','#12222b')};
+const verifiedTs=new Date(VERIFIED.replace(' ','T')+'+08:00').getTime();
+const stale=Date.now()-verifiedTs>4*3600*1000;
+let cat='全部',plat='全部',limit=24;
+const grid=document.querySelector('#grid');
+const moreBtn=document.querySelector('#more');
+const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)');
+const revealed=new Set();
+document.querySelector('#verifiedAt').textContent=VERIFIED;
+document.querySelector('#totalCount').textContent=items.length;
+
+function fmt(n){return n>=10000?(n/10000).toFixed(1).replace(/\.0$/,'')+' 万观看':n.toLocaleString('en-US')+' 人观看'}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
+/* 入场：卡片首次进入视口时按水平顺序错峰浮现，一生只演一次 */
+let io=null,ioFired=false;
+if('IntersectionObserver' in window && !reduceMotion.matches){
+  io=new IntersectionObserver(entries=>{
+    ioFired=true;
+    const vis=entries.filter(e=>e.isIntersecting).sort((a,b)=>{
+      const ra=a.target.getBoundingClientRect(), rb=b.target.getBoundingClientRect();
+      return Math.abs(ra.top-rb.top)>6 ? ra.top-rb.top : ra.left-rb.left;
+    });
+    vis.forEach((e,i)=>{
+      const el=e.target, delay=Math.min(i,5)*55;
+      io.unobserve(el);
+      requestAnimationFrame(()=>{
+        el.style.transitionDelay=delay+'ms';
+        el.classList.add('in');
+      });
+      setTimeout(()=>{el.style.transitionDelay='';el.classList.add('ready')},delay+600);
+    });
+  },{rootMargin:'0px 0px -5% 0px',threshold:.05});
+}
+function settle(el){el.classList.add('instant','in','ready');el.style.transitionDelay='';setTimeout(()=>el.classList.remove('instant'),80);}
+/* 兜底：若观察器始终未回调（无渲染帧的环境），立刻让所有卡片可见，宁可无动效也不白屏 */
+setTimeout(()=>{if(!ioFired)grid.querySelectorAll('.card').forEach(settle)},900);
+
+function reveal(){
+  grid.querySelectorAll('.card').forEach(el=>{
+    const key=el.getAttribute('href');
+    if(revealed.has(key)||!io){revealed.add(key);settle(el);return;}
+    revealed.add(key);io.observe(el);
+  });
+}
+
+function renderChips(){
+  document.querySelector('#categories').innerHTML=cats.map(c=>`<button class="chip ${c===cat?'active':''}" data-cat="${c}" aria-pressed="${c===cat}">${c}</button>`).join('');
+  document.querySelectorAll('#categories .chip').forEach(b=>b.onclick=()=>{if(cat===b.dataset.cat)return;cat=b.dataset.cat;limit=24;revealed.clear();render()});
+  document.querySelector('#platforms').innerHTML=plats.map(p=>`<button class="chip ${p===plat?'active':''}" data-plat="${p}" aria-pressed="${p===plat}">${p}</button>`).join('')
+    +SOON.map(p=>`<span class="chip soon" title="${p.why}">${p.n} · 暂不支持</span>`).join('');
+  document.querySelectorAll('#platforms .chip[data-plat]').forEach(b=>b.onclick=()=>{if(plat===b.dataset.plat)return;plat=b.dataset.plat;limit=24;revealed.clear();render()});
+}
+
+/* 全部视图下按分类轮转交错：让首屏立刻呈现类型广度，而非同类扎堆 */
+function mixOrder(list){
+  const by={};
+  list.forEach(x=>{(by[x.cat]=by[x.cat]||[]).push(x)});
+  Object.keys(by).forEach(k=>by[k].sort((a,b)=>(b.v||0)-(a.v||0)));
+  const keys=CAT_ORDER.filter(c=>by[c]);
+  const out=[];
+  for(let i=0;;i++){
+    let added=false;
+    keys.forEach(k=>{if(by[k][i]){out.push(by[k][i]);added=true}});
+    if(!added)break;
+  }
+  return out;
+}
+
+function render(){
+  renderChips();
+  const filtered=items.filter(x=>(cat==='全部'||x.cat===cat)&&(plat==='全部'||x.plat===plat));
+  const list=(cat==='全部'&&plat==='全部')?mixOrder(filtered):filtered;
+  document.querySelector('#count').textContent=`${filtered.length} 场直播`;
+  grid.innerHTML=list.slice(0,limit).map(x=>{
+    const zh=esc(x.zh),orig=esc(x.orig),ch=esc(x.ch);
+    const fb=FALLBACK[x.plat]||FALLBACK.Twitch;
+    // x.st：该平台本轮核查失败，这条沿用上一轮结果（平台级故障隔离回填），不能标成"直播中"
+    const itemStale=x.st||stale;
+    const badgeTitle=x.st?'该平台本轮核查未通过，此条沿用上一轮结果并已重新确认封面可用；点开若已收播，等下一轮更新即可':(stale?('本轮核查（'+VERIFIED.slice(11)+'）时该直播正在播出，可能已结束；点开若已收播，等下一轮更新即可'):'该直播正在播出');
+    return `<a class="card" href="${x.url}" target="_blank" rel="noopener" aria-label="${zh}，${x.plat} 频道 ${ch}，在新窗口打开">
+      <div class="cover">
+        <img src="${x.thumb}" alt="${zh} 封面" loading="lazy" onload="this.classList.add('ld')" onerror="this.onerror=null;this.src='${fb}';this.classList.add('ld')">
+        <span class="badge${itemStale?' stale':''}" title="${badgeTitle}"><span class="pulse"></span>${itemStale?'核查时在播':'直播中'}</span>
+        <span class="pill">${x.plat}</span>
+        <span class="play" aria-hidden="true">↗</span>
+      </div>
+      <div class="info">
+        <div class="avatar" aria-hidden="true">${x.av?`<img src="${esc(x.av)}" alt="" loading="lazy" onerror="this.remove()">`:''}<span>${esc((x.ch||'?').slice(0,1).toUpperCase())}</span></div>
+        <div class="details">
+          <h3>${zh}</h3>
+          <div class="orig">原标题：${orig}</div>
+          <div class="meta">${ch} · ${x.plat}${x.lang?' · '+x.lang:''}</div>
+          <div class="tags"><span class="tag">${x.cat}</span><span class="tag">${fmt(x.v)}</span></div>
+          <span class="watch">前往观看 ↗</span>
+        </div>
+      </div>
+    </a>`}).join('')
+    ||`<div class="empty">暂时没有符合条件的直播，试试其他筛选。</div>`;
+  moreBtn.hidden=limit>=list.length;
+  if(!moreBtn.hidden)moreBtn.innerHTML=`加载更多 ${list.length-limit} 场 <span class="mk" aria-hidden="true">✳</span>`;
+  reveal();
+}
+moreBtn.onclick=()=>{limit+=24;render()};
+
+/* header 滚动后转为玻璃态 */
+const hd=document.querySelector('header');
+const onScroll=()=>hd.classList.toggle('up',window.scrollY>6);
+addEventListener('scroll',onScroll,{passive:true});
+onScroll();
+render();
+</script>
+</body>
+</html>
